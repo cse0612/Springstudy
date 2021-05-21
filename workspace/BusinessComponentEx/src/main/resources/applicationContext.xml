@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
 
-
+	<context:component-scan base-package="com.company.business"></context:component-scan>
+	
+	<bean id="log" class="com.company.business.common.LogAdvice"></bean>
+	<!--  aop 어노테이션 설정방법 -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	
+	<!--  aop xml 설정방법 -->
+	<!--  aop:config>
+		<aop:pointcut  id="allPointcut" expression="execution(* com.company.business..*Impl.*(..))"/>
+		<aop:pointcut  id="getPointcut" expression="execution(* com.company.business..*Impl.get*(..))"/>
+		<aop:aspect ref="log">
+			<aop:after pointcut-ref="getPointcut" method="printLog"/>
+		</aop:aspect>
+	</aop:config-->
 </beans>

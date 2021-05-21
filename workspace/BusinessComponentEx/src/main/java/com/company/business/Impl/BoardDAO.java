@@ -6,9 +6,13 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.company.business.board.BoardDO;
 import com.company.business.common.JDBCUtil;
 
+
+@Repository("boardDAO")
 public class BoardDAO {
 	//DB 관련 변수 선언
 	private Connection conn = null;
@@ -16,7 +20,7 @@ public class BoardDAO {
 	private ResultSet rs = null;
 	
 	//전체 게시글 목록 조회 메서드 구현
-	public List<BoardDO> getBoardList(String searchField, String searchText) {
+	public List<BoardDO> getBoardList(BoardDO boardDO) {
 		
 		System.out.println("===> getBoardList() 기능 처리" );
 		
@@ -27,10 +31,10 @@ public class BoardDAO {
 			conn = JDBCUtil.getConnection();	//JDBCUtil 클래스의 메서드 호출을 통해 DB관련 객체 생성 
 			String where ="";
 			//검색인 경우에만  where절 추가
-			if(searchField != null && searchText != null) {
 			//if(searchField != null && searchText != null) {
-				where = "where "+searchField+" like '%"+searchText+"%'";
-			} 
+			//if(searchField != null && searchText != null) {
+//				where = "where "+searchField+" like '%"+searchText+"%'";
+	//		} 
 			//SQL문 완성
 			String Condition_SQL = "SELECT * FROM board "+where+" ORDER BY seq desc";  	
 			
