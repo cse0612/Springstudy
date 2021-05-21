@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- class 속성의 속성값을 줄때는 전체 클래스 경로를 지정 -->
+	<bean id="TV" class="com.company.couplingtest.SamsungTV" p:speaker-ref="sony" p:price="27000000"/>
+		
+	<bean id="sony" class="com.company.couplingtest.SonySpeaker"/>
+	<bean id="apple" class="com.company.couplingtest.AppleSpeaker"/>
+	
+</beans>
