@@ -1,5 +1,6 @@
 package com.company.view.controller;
 
+// URL주소 결정 - 접두사 , 접미사 
 public class ViewResolver {
 	//필드 선언
 	public String prefix;	//접두사

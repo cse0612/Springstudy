@@ -11,6 +11,7 @@ import com.company.view.board.UpdateBoardController;
 import com.company.view.user.LoginController;
 import com.company.view.user.LogoutController;
 
+//URL Request별 Controller 매핑 자료 구조
 public class HandlerMapping {
 	//객체 자료구조 
 	private Map<String, Controller> mappings;
@@ -31,7 +32,7 @@ public class HandlerMapping {
 
 	//사용자 정의 매서드 
 	public Controller getController(String path) {
-		return mappings.get(path);
+		return mappings.get(path);	// 요청URL에 따라 Controller 객체 반환
 	}
 	
 	
